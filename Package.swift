@@ -2,16 +2,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-regular-expression",
+    name: "SwiftRegularExpression",
     products: [
         .library(
-            name: "swift-regular-expression",
-            targets: ["swift-regular-expression"]),
+            name: "SwiftRegularExpression",
+            targets: ["SwiftRegularExpression"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "swift-regular-expression",
+            name: "SwiftRegularExpression",
             dependencies: [])
     ]
 )
