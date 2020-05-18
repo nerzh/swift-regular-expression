@@ -2,6 +2,33 @@
 
 ## Swift REGEXP ( swift regular expression )
 
+### Install
+
+```ruby
+pod 'SwiftRegularExpression'
+```
+
+or
+
+```swift
+// swift-tools-version:5.2
+...
+
+dependencies: [
+    .package(name: "SwiftRegularExpression", url: "https://github.com/nerzh/swift-regular-expression.git", .upToNextMajor(from: "0.2.0"))
+],
+targets: [
+    .target(
+        name: "nameProject",
+        dependencies: [
+            .product(name: "SwiftRegularExpression", package: "SwiftRegularExpression")
+        ]
+    )
+]
+
+...
+```
+
 ### Usage
 
 #### regexp: Find String matches
