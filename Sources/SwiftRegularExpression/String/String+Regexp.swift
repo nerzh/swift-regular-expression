@@ -209,7 +209,7 @@ extension String {
     ) -> [NSTextCheckingResult] {
         do {
             let regexp: NSRegularExpression = try .init(pattern: regexpPattern, options: regexpOptions)
-            return regexp.matches(in: self, options: matchOptions, range: NSRange(location: 0, length: self.count))
+            return regexp.matches(in: self, options: matchOptions, range: NSRange(location: 0, length: self.utf16.count))
         } catch {
             return []
         }
