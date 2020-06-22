@@ -200,7 +200,8 @@ extension String {
 
         let startLocation: Int = rangeOfMatch.location
         let endLocation: Int = startLocation + rangeOfMatch.length
-        return self.index(self.startIndex, offsetBy: startLocation) ..< self.index(self.startIndex, offsetBy: endLocation)
+
+        return self.utf16.index(self.startIndex, offsetBy: startLocation) ..< self.utf16.index(self.startIndex, offsetBy: endLocation)
     }
 
     private func matches(_ regexpPattern: String,
@@ -210,6 +211,7 @@ extension String {
         do {
             let regexp: NSRegularExpression = try .init(pattern: regexpPattern, options: regexpOptions)
             return regexp.matches(in: self, options: matchOptions, range: NSRange(location: 0, length: self.utf16.count))
+//            return regexp.matches(in: self, options: matchOptions, range: NSRange(location: 0, length: self.count))
         } catch {
             return []
         }
