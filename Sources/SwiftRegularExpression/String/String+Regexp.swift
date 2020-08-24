@@ -42,7 +42,6 @@ extension String {
     public func regexp(_ regexpPattern: String, _ options: NSRegularExpression.Options = []) -> [Int:String] {
         var result = [Int:String]()
         let matches = self.matches(regexpPattern, options)
-        if matches.count > 0 { result = [Int:String]() }
 
         var lastIndex = matches.count - 1
         while lastIndex >= 0 {
@@ -196,7 +195,7 @@ extension String {
         let rangeOfMatch: NSRange = match.range(at: number)
         /// ZAGLUSHKA - BRED!!! Esli vlozhennost ((\d)|(\d)) gluk rangeOfMatch mozhet bit tipa {3123123, 0}
         /// [BUG] If ((\d)|(\d)) then we can have the rangeOfMatch for example as this {3123123, 0}
-        if rangeOfMatch.length <= 0 { return nil }
+        if rangeOfMatch.location > self.utf16.count { return nil }
 
         let startLocation: Int = rangeOfMatch.location
         let endLocation: Int = startLocation + rangeOfMatch.length
