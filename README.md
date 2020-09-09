@@ -30,7 +30,9 @@ targets: [
 ```
 
 ### Usage
-
+```swift
+import SwiftRegularExpression 
+```
 #### regexp: Find String matches
 ```swift
 "hello world"[#"[^\s]+"#]
