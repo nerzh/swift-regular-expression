@@ -123,10 +123,15 @@ extension String {
                                      _ options: NSRegularExpression.Options = []
     ) {
         if let regex: NSRegularExpression = try? .init(pattern: regexpPattern, options: options) {
-            self = regex.stringByReplacingMatches(in: self,
-                                                  options: [],
-                                                  range: NSMakeRange(0, self.count),
-                                                  withTemplate: value)
+            let temp: String = regex.stringByReplacingMatches(in: self,
+                                                                options: [],
+                                                                range: NSMakeRange(0, self.utf16.count),
+                                                                withTemplate: value)
+            if let data: Data = temp.data(using: .utf8),
+               let result: String = String(data: data, encoding: .utf8)
+            {
+                self = result
+            }
         }
     }
 
@@ -210,7 +215,6 @@ extension String {
         do {
             let regexp: NSRegularExpression = try .init(pattern: regexpPattern, options: regexpOptions)
             return regexp.matches(in: self, options: matchOptions, range: NSRange(location: 0, length: self.utf16.count))
-//            return regexp.matches(in: self, options: matchOptions, range: NSRange(location: 0, length: self.count))
         } catch {
             return []
         }

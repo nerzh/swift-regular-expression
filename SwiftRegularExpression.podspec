@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name          = 'SwiftRegularExpression'
   s.module_name   = 'SwiftRegularExpression'
-  s.version       = '0.2.3'
+  s.version       = '0.2.4'
   s.summary       = '🏰 SwiftRegularExpression'
 
   s.swift_version = '4.2'
